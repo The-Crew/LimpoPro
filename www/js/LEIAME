@@ -1,0 +1,86 @@
+/----------------------------------------------/
+ARQUIVO PARA ADIANTAR O ENTENDIMENTO DO CÓDIGO
+E INFORMAR ALGUNS PADRÕES
+@filipe
+/----------------------------------------------/
+
+Os métodos serão divididos nas seguintes camadas:
+VIEW - Todos os métodos referentes a solicitar página, abrir popups, informar erro, manipular dados de campos, etc.
+MODEL - Todos os modelos dos objetos do app (Usuario e Imoveis)
+CONTROLLER - Todos os métodos responsáveis por receber, tratar, verificar, enviar, controlar os dados no app.
+SERVER - Todos os mátodos responsáveis por lidar com o servidor (enviar e receber dados)
+
+Os arquivos js serão criados por "função ou classe" sempre que necessário, e renomeados com o nome de sua camada a frente. 
+Exemplos: 
+controller.js (Objeto responsável por manter o tráfego de dados entre as classes e métodos do app)
+controller.verificar.js (Função responsável por verficar se os dados estão corretos)
+model.user.js (Classe do objeto de usuario)
+model.imovel.js (Classe do objeto dos imóveis)
+view.js (Objeto responsável por controlar a view)
+view.getsetdados.js (Função responsável por manipular os dados dos campos das páginas)
+view.pagina.js (Funções responsáveis por chamar páginas e popups)
+view.err.js (Função responsável por informar erros)
+
+A ideia é tentar manter a organização no código, para evitar um emaranhado de códigos em um único arquivo e facilitar futuras alterações.
+
+-----------------------------
+
+Função debug: Para debugar o código basta chamar a função passando a mensagem e variaveis que deseja imprimir. É possível fazer o debug por popup, basta alterar o debugPopup = true, na linha 7 do arquivo controller.js. Favor usar um padrão para manter o debug melhor detalhado para achar um possível erro.
+
+Padrão:
+debug('nome_do_arquivo.js - nome_da_função() - Qualquer mensagem que desejar', variavel_1, variavel_2, variavel_3, variavel_4);
+
+Exemplo: Debugar o envio de dados do view.enviarDados().
+
+debug('view.getsetdados.js - enviarDados()', tipo, dados);
+
+Saida no console: view.getsetdados.js - enviarDados(): user, null
+
+-----------------------------
+
+view.enviarDados(): Chame em um botão de formulário para passar os dados dos campos para o javascript. 
+Para formulário de Usuario: onclick="view.enviarDados('user')"
+Para formulário de imóvel: onclick="view.enviarDados('imovel')"
+
+-----------------------------
+
+view.obterDados(): Chamado para obter dados dos objetos e preencher no 'value' dos camos dos formulários. AINDA EM IMPLEMENTAÇÃO.
+
+-----------------------------
+
+view.err(): Chamado para alertar algum erro. 
+Quando o desejo é alertar algum campo do formulário errado, apenas passa o objeto de user ou imovel, e o mesmo saberá qual campo foi marcado pelo controller.verificar().
+Quando o desejo é informar algum erro por popup ao usuario, apenas precisa passar a mensagem de erro como parâmetro.
+Exemploss:
+
+view.err(user);
+view.err('Erro ao se conectar com o servidor');
+
+O método já está em funcionamento mas precisa continuar a implementação.
+
+-----------------------------
+
+view.pagina(): Responsável por chamar páginas. PRECISA SER IMPLEMENTADO.
+
+-----------------------------
+
+view.popup(): Chamado quando se deseja abrir algum popup ao usuário. PRECISA SER MELHOR IMPLEMENTADO.
+
+-----------------------------
+
+controller.registrar(): Chamado pelo moetodo view.enviarDados(), responsável por converter o objeto em JSON e transferir para o método responsável por enviar ao servidor. Deve-se passar o objeto de usuario ou imovel, e o tipo(user ou imovel).
+Exemplo: controller.registrar(user, 'user');
+
+-----------------------------
+
+controller.verificar(): Chamado pelo metodo controller.registrar(), responsável por validar os camos digitados pelo usuário. Deve-se passar o objeto de usuario ou imovel e o tipo(user ou imovel).
+Exemplo: controller.verificar(user, 'user');
+
+-----------------------------
+
+server.enviar(): Chamado para enviar os dados ao servidor. Deve-se passar apenas o JSON.
+Exemplo: server.enviar(json);
+
+-----------------------------
+
+server.obter(): Chamado para solicitar dados ao servidor. AINDA EM IMPLEMENTAÇÃO.

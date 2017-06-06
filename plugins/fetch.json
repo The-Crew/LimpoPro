@@ -1,0 +1,49 @@
+{
+    "cordova-plugin-device": {
+        "source": {
+            "type": "local",
+            "path": "/home/filipe/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-device"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-splashscreen": {
+        "source": {
+            "type": "local",
+            "path": "/home/filipe/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-splashscreen"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "local",
+            "path": "/home/filipe/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-statusbar"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "phonegap-facebook-plugin": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Wizcorp/phonegap-facebook-plugin",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "1771495909829161",
+            "APP_NAME": "LoginLimpô"
+        }
+    },
+    "cordova-plugin-facebook4": {
+        "source": {
+            "type": "local",
+            "path": "/home/filipe/Intel XDK/cordova-plugin-facebook4-master"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "1771495909829161",
+            "APP_NAME": "LoginLimpô"
+        }
+    }
+}
