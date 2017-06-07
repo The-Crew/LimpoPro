@@ -117,6 +117,11 @@
          uib_sb.toggle_sidebar($("#menu3"));  
          return false;
     });
+
+    /* Fechar o menu lateral com um click fora*/
+    $(document).click(function(e){
+        uib_sb.close_all_sidebars();
+    });
     
         /* button  #btn-save-config */
     $(document).on("click", "#btn-save-config", function(evt)
